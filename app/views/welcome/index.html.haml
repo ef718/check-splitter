@@ -1,1 +1,8 @@
-%h1 Hi
+%h1 Check Splitter
+
+= form_tag("#", method: "get") do
+  = label_tag(:q, "Pre-Tax Bill")
+  = text_field_tag(:q)
+  = label_tag(:q2, "Tax Amount")
+  = text_field_tag(:q2)
+  = submit_tag("Split")
