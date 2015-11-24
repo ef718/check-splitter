@@ -1,8 +1,22 @@
 %h1 Check Splitter
 
-= form_tag("#", method: "get") do
-  = label_tag(:q, "Pre-Tax Bill")
-  = text_field_tag(:q)
-  = label_tag(:q2, "Tax Amount")
-  = text_field_tag(:q2)
-  = submit_tag("Split")
+
+= form_tag('#') do
+  .row
+    = label_tag 'Pre-Tax Bill'
+    = text_field_tag 'bill'
+  .row
+    = label_tag 'Tax Amount'
+    = text_field_tag 'tax'
+  .row
+    = label_tag 'Tip Percentage'
+  .row
+    = label_tag '15%'
+    = radio_button_tag('tip', '15%', 0.15)
+    = label_tag '18%'
+    = radio_button_tag('tip', '18%', 0.18)
+    = label_tag '20%'
+    = radio_button_tag('tip', '20%', 0.20)
+    = label_tag '25%'
+    = radio_button_tag('tip', '25%', 0.25)
+  = submit_tag 'Split Now'
