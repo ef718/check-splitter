@@ -1,13 +1,16 @@
 %h1 Check Splitter
 
 
-= form_tag('#') do
+= form_tag('/results', method: "get") do
+  .row
+    = label_tag 'Number of People'
+    = text_field_tag(:number, 'people')
   .row
     = label_tag 'Pre-Tax Bill'
-    = text_field_tag 'bill'
+    = text_field_tag(:pretax_bill, 'bill')
   .row
     = label_tag 'Tax Amount'
-    = text_field_tag 'tax'
+    = text_field_tag(:tax, 'tax')
   .row
     = label_tag 'Tip Percentage'
   .row
