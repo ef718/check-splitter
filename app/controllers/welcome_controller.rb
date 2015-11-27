@@ -3,9 +3,14 @@ class WelcomeController < ApplicationController
   end
 
   def results
-    @people = params[:people]
-    pretax_bill = params[:pretax_bill]
-    tax = params[:tax]
-    tip = params[:tip]
+    @people = params[:people].to_i
+    pretax_bill = params[:pretax_bill].to_f
+    tax = params[:tax].to_f
+    tip = params[:tip].to_f
+    split_tax = tax / @people
+    @split_bill = (pretax_bill / @people + split_tax).round(2)
+
+    @split_tip = (pretax_bill * (tip / 100) / @people).round(2)
+    @split_total = @split_bill + @split_tip
   end
 end
