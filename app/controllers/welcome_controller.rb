@@ -3,9 +3,9 @@ class WelcomeController < ApplicationController
   end
 
   def results
-    params[:people]
-    params[:pretax_bill]
-    params[:tax]
-    params[:tip]
+    @people = params[:people]
+    pretax_bill = params[:pretax_bill]
+    tax = params[:tax]
+    tip = params[:tip]
   end
 end
