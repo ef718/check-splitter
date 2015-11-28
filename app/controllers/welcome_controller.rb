@@ -1,4 +1,6 @@
 class WelcomeController < ApplicationController
+  before_action :validate_form, only: :results
+
   def index
   end
 
@@ -12,5 +14,10 @@ class WelcomeController < ApplicationController
 
     @split_tip = (pretax_bill * (tip / 100) / @people).round(2)
     @split_total = @split_bill + @split_tip
+  end
+
+  private
+
+  def validate_form
   end
 end
