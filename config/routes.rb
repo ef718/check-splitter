@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   get '/results' => 'welcome#results'
 
+  get '/uneven' => 'welcome#uneven_split'
+
+  get '/uneven-results' => 'welcome#uneven_results'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
