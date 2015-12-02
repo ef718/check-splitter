@@ -1,27 +1,40 @@
-%h1 Check Splitter
+.container-fluid
+  .row
+    .col-xs-12
+      %h1 Check Splitter
 
+  = form_tag('/results', method: "get") do
+    .row
+      .col-xs-12
+        = label_tag 'Number of People'
+        = text_field_tag(:people)
+    .row
+      .col-xs-12
+        = label_tag 'Pre-Tax Bill'
+        = text_field_tag(:pretax_bill)
+    .row
+      .col-xs-12
+        = label_tag 'Tax Amount'
+        = text_field_tag(:tax)
+    .row
+      .col-xs-12
+        = label_tag 'Tip Percentage'
+    .row
+      .col-xs-12
+        .col-xs-12
+          = label_tag '15%'
+          = radio_button_tag(:tip, '15%', 0.15)
+        .col-xs-12
+          = label_tag '18%'
+          = radio_button_tag(:tip, '18%', 0.18)
+        .col-xs-12
+          = label_tag '20%'
+          = radio_button_tag(:tip, '20%', 0.20)
+        .col-xs-12
+          = label_tag '25%'
+          = radio_button_tag(:tip, '25%', 0.25)
+    = submit_tag 'Split Now'
 
-= form_tag('/results', method: "get") do
   .row
-    = label_tag 'Number of People'
-    = text_field_tag(:people)
-  .row
-    = label_tag 'Pre-Tax Bill'
-    = text_field_tag(:pretax_bill)
-  .row
-    = label_tag 'Tax Amount'
-    = text_field_tag(:tax)
-  .row
-    = label_tag 'Tip Percentage'
-  .row
-    = label_tag '15%'
-    = radio_button_tag(:tip, '15%', 0.15)
-    = label_tag '18%'
-    = radio_button_tag(:tip, '18%', 0.18)
-    = label_tag '20%'
-    = radio_button_tag(:tip, '20%', 0.20)
-    = label_tag '25%'
-    = radio_button_tag(:tip, '25%', 0.25)
-  = submit_tag 'Split Now'
-
-= link_to 'Split Unevenly', '/uneven'
+    .col-xs-12
+      = link_to 'Split Unevenly', '/uneven'

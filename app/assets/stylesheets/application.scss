@@ -1,0 +1,9 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  background: url("pusheen.png") repeat left top;
+  background-size: contain;
+  background-position:center;
+  padding: 8%;
+}
