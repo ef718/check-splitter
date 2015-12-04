@@ -1,6 +1,7 @@
-%h1 Results
-%h2= "Each of the #{@people} pays..."
-%p= "Bill: #{number_to_currency(@split_bill)}"
-%p= "Tip: #{number_to_currency(@split_tip)}"
-%p= "Total: #{number_to_currency(@split_total)}"
-%div= link_to "Back", root_path
+.container-fluid.main
+  %h1 Results
+  %h2= "Each of the #{@people} pays..."
+  %p= "Bill: #{number_to_currency(@split_bill)}"
+  %p= "Tip: #{number_to_currency(@split_tip)}"
+  %p= "Total: #{number_to_currency(@split_total)}"
+  %div= link_to "Back", root_path
