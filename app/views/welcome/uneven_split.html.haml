@@ -3,50 +3,47 @@
   %h2 Split Unevenly
   %p Enter each diner's amounts separated by a space.
 
-  = form_for('/uneven-results', method: "get") do |f|
+  = form_tag('/uneven-results', method: "get") do
     .row
       .col-xs-12
-        = f.label :p1, 'Diner 1'
+        = label_tag 'Diner 1'
         = number_field_tag(:p1, nil, step: 'any')
     .row
       .col-xs-12
-        = f.label :p2, 'Diner 2'
+        = label_tag 'Diner 2'
         = number_field_tag(:p2, nil, step: 'any')
     .row
       .col-xs-12
-        = f.label :p3, 'Diner 3'
+        = label_tag 'Diner 3'
         = number_field_tag(:p3, nil, step: 'any')
     .row
       .col-xs-12
-        = f.label :p4, 'Diner 4'
+        = label_tag 'Diner 4'
         = number_field_tag(:p4, nil, step: 'any')
     .row
       .col-xs-12
-        = f.label :p5, 'Diner 5'
+        = label_tag 'Diner 5'
         = number_field_tag(:p5, nil, step: 'any')
     .row
       .col-xs-12
-        = f.label :tax, 'Tax Amount:'
+        = label_tag 'Tax Amount:'
         = number_field_tag(:tax, nil, step: 'any')
     .row
       .col-xs-12
-        = f.label :tip, 'Tip Percentage'
+        = label_tag 'Tip Percentage'
     .row
       .col-xs-12
-        = f.radio_button(:tip, 0.15)
-        = f.label(:tip, "15%", value: 0.15, checked: true)
-    .row
-      .col-xs-12
-        = f.radio_button(:tip, 0.18)
-        = f.label(:tip, "18%", value: 0.18)
-    .row
-      .col-xs-12
-        = f.radio_button(:tip, 0.20)
-        = f.label(:tip, "20%", value: 0.20)
-    .row
-      .col-xs-12
-        = f.radio_button(:tip, 0.25)
-        = f.label(:tip, "25%", value: 0.25)
-    = f.submit 'Split Now'
+        = radio_button_tag(:tip, '15%', 0.15)
+        = label_tag '15%'
+        %br
+        = radio_button_tag(:tip, '18%', 0.18)
+        = label_tag '18%'
+        %br
+        = radio_button_tag(:tip, '20%', 0.20)
+        = label_tag '20%'
+        %br
+        = radio_button_tag(:tip, '25%', 0.25)
+        = label_tag '25%'
+    = submit_tag 'Split Now'
 
   %div= link_to 'Split Equally', root_path
