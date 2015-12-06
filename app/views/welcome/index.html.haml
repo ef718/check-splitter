@@ -12,12 +12,12 @@
     .row
       .col-xs-12
         = label_tag 'Pre-Tax Bill:'
-        = number_field_tag(:pretax_bill)
+        = number_field_tag(:pretax_bill, nil, step: 'any')
     %br
     .row
       .col-xs-12
         = label_tag 'Tax Amount:'
-        = number_field_tag(:tax)
+        = number_field_tag(:tax, nil, step: 'any')
     %br
     .row
       .col-xs-12
