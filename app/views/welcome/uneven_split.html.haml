@@ -5,37 +5,48 @@
 
   = form_for('/uneven-results', method: "get") do |f|
     .row
-      = f.label :p1, 'Diner 1'
-      = number_field_tag(:p1, nil, step: 'any')
+      .col-xs-12
+        = f.label :p1, 'Diner 1'
+        = number_field_tag(:p1, nil, step: 'any')
     .row
-      = f.label :p2, 'Diner 2'
-      = number_field_tag(:p2, nil, step: 'any')
+      .col-xs-12
+        = f.label :p2, 'Diner 2'
+        = number_field_tag(:p2, nil, step: 'any')
     .row
-      = f.label :p3, 'Diner 3'
-      = number_field_tag(:p3, nil, step: 'any')
+      .col-xs-12
+        = f.label :p3, 'Diner 3'
+        = number_field_tag(:p3, nil, step: 'any')
     .row
-      = f.label :p4, 'Diner 4'
-      = number_field_tag(:p4, nil, step: 'any')
+      .col-xs-12
+        = f.label :p4, 'Diner 4'
+        = number_field_tag(:p4, nil, step: 'any')
     .row
-      = f.label :p5, 'Diner 5'
-      = number_field_tag(:p5, nil, step: 'any')
+      .col-xs-12
+        = f.label :p5, 'Diner 5'
+        = number_field_tag(:p5, nil, step: 'any')
     .row
-      = f.label :tax, 'Tax Amount:'
-      = number_field_tag(:tax, nil, step: 'any')
+      .col-xs-12
+        = f.label :tax, 'Tax Amount:'
+        = number_field_tag(:tax, nil, step: 'any')
     .row
-      = f.label :tip, 'Tip Percentage'
+      .col-xs-12
+        = f.label :tip, 'Tip Percentage'
     .row
-      = f.radio_button(:tip, 0.15)
-      = f.label(:tip, "15%", value: 0.15)
+      .col-xs-12
+        = f.radio_button(:tip, 0.15)
+        = f.label(:tip, "15%", value: 0.15, checked: true)
     .row
-      = f.radio_button(:tip, 0.18)
-      = f.label(:tip, "18%", value: 0.18)
+      .col-xs-12
+        = f.radio_button(:tip, 0.18)
+        = f.label(:tip, "18%", value: 0.18)
     .row
-      = f.radio_button(:tip, 0.20)
-      = f.label(:tip, "20%", value: 0.20)
+      .col-xs-12
+        = f.radio_button(:tip, 0.20)
+        = f.label(:tip, "20%", value: 0.20)
     .row
-      = f.radio_button(:tip, 0.25)
-      = f.label(:tip, "25%", value: 0.25)
-    = submit_tag 'Split Now'
+      .col-xs-12
+        = f.radio_button(:tip, 0.25)
+        = f.label(:tip, "25%", value: 0.25)
+    = f.submit 'Split Now'
 
   %div= link_to 'Split Equally', root_path
