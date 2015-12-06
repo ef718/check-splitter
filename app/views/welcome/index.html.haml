@@ -6,22 +6,22 @@
   = form_tag('/results', method: "get") do
     .row
       .col-xs-12
-        = label_tag 'Number of People'
-        = text_field_tag(:people)
+        = label_tag 'Number of People:'
+        = number_field_tag(:people)
     %br
     .row
       .col-xs-12
-        = label_tag 'Pre-Tax Bill'
-        = text_field_tag(:pretax_bill)
+        = label_tag 'Pre-Tax Bill:'
+        = number_field_tag(:pretax_bill)
     %br
     .row
       .col-xs-12
-        = label_tag 'Tax Amount'
-        = text_field_tag(:tax)
+        = label_tag 'Tax Amount:'
+        = number_field_tag(:tax)
     %br
     .row
       .col-xs-12
-        = label_tag 'Tip Percentage'
+        = label_tag 'Tip Percentage:'
     .row
       .col-xs-12
         .col-xs-12
