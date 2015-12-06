@@ -10,9 +10,9 @@ class WelcomeController < ApplicationController
     tax = params[:tax].to_f
     tip = params[:tip].to_f
     split_tax = tax / @people
-    @split_bill = (pretax_bill / @people + split_tax).round(2)
+    @split_bill = (pretax_bill / @people + split_tax)
 
-    @split_tip = (pretax_bill * (tip / 100) / @people).round(2)
+    @split_tip = (pretax_bill * (tip / 100) / @people)
     @split_total = @split_bill + @split_tip
   end
 
@@ -36,7 +36,7 @@ class WelcomeController < ApplicationController
       {individual_bill: individual_post_tax(amount), individual_tip: individual_tip(amount), individual_total: (individual_post_tax(amount).to_f + individual_tip(amount).to_f)}
     end
 
-    @total_pretip = @total_pretax + @tax
+    @total_pretip = @total_pretax.to_f + @tax.to_f
     @total_tip = @total_pretip * (@tip_percentage / 100)
     @overall_total = @total_pretip + @total_tip
 
@@ -52,17 +52,11 @@ class WelcomeController < ApplicationController
   end
 
   def individual_post_tax(individual_sum)
-    individual_sum + @tax * (individual_sum / @total_pretax).round(2) if individual_sum
+    individual_sum + @tax * (individual_sum / @total_pretax) if individual_sum
   end
 
   def individual_tip(individual_sum)
-    ((@tip_percentage / 100) * individual_sum).round(2) if individual_sum
-  end
-
-  def individual_total(individual_bill, individual_tip)
-    if individual_bill && individual_tip
-      (individual_bill + individual_tip).round(2)
-    end
+    ((@tip_percentage / 100) * individual_sum) if individual_sum
   end
 
   def diner_bill_hash(individual_bill, individual_tip, individual_total)
