@@ -29,25 +29,12 @@ class WelcomeController < ApplicationController
     p4 = sum_entry(params[:p4])
     p5 = sum_entry(params[:p5])
 
-    @total_pretax = [p1, p2, p3, p4, p5].compact.reduce(:+)
+    diner_pretax_amounts = [p1, p2, p3, p4, p5].compact
+    @total_pretax = diner_pretax_amounts.reduce(:+)
 
-    @p1_bill = post_tax_bill(p1)
-    @p2_bill = post_tax_bill(p2)
-    @p3_bill = post_tax_bill(p3)
-    @p4_bill = post_tax_bill(p4)
-    @p5_bill = post_tax_bill(p5)
-
-    @p1_tip = individual_tip(p1)
-    @p2_tip = individual_tip(p2)
-    @p3_tip = individual_tip(p3)
-    @p4_tip = individual_tip(p4)
-    @p5_tip = individual_tip(p5)
-
-    @p1_total = individual_total(@p1_bill, @p1_tip)
-    @p2_total = individual_total(@p2_bill, @p2_tip)
-    @p3_total = individual_total(@p3_bill, @p3_tip)
-    @p4_total = individual_total(@p4_bill, @p4_tip)
-    @p5_total = individual_total(@p5_bill, @p5_tip)
+    @group_bill = diner_pretax_amounts.map do |amount|
+      {individual_bill: individual_post_tax(amount), individual_tip: individual_tip(amount), individual_total: (individual_post_tax(amount).to_f + individual_tip(amount).to_f)}
+    end
 
     @total_pretip = @total_pretax + @tax
     @total_tip = @total_pretip * (@tip_percentage / 100)
@@ -64,7 +51,7 @@ class WelcomeController < ApplicationController
     entry.split.map(&:to_f).reduce(:+)
   end
 
-  def post_tax_bill(individual_sum)
+  def individual_post_tax(individual_sum)
     individual_sum + @tax * (individual_sum / @total_pretax).round(2) if individual_sum
   end
 
@@ -76,5 +63,8 @@ class WelcomeController < ApplicationController
     if individual_bill && individual_tip
       (individual_bill + individual_tip).round(2)
     end
+  end
+
+  def diner_bill_hash(individual_bill, individual_tip, individual_total)
   end
 end

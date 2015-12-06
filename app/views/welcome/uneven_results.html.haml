@@ -1,26 +1,6 @@
 .container-fluid.main
   %h1 Results
-  %p= "Diner 1 Bill: #{number_to_currency(@p1_bill)}"
-  %p= "- Tip: #{number_to_currency(@p1_tip)}"
-  %p= "- Total: #{number_to_currency(@p1_total)}"
 
-  %p= "Diner 2 Bill: #{number_to_currency(@p2_bill)}"
-  %p= "- Tip: #{number_to_currency(@p2_tip)}"
-  %p= "- Total: #{number_to_currency(@p2_total)}"
+  = render partial: "bill", collection: @group_bill, as: :diner
 
-  %p= "Diner 3 Bill: #{number_to_currency(@p3_bill)}"
-  %p= "- Tip: #{number_to_currency(@p3_tip)}"
-  %p= "- Total: #{number_to_currency(@p3_total)}"
-
-  %p= "Diner 4 Bill: #{number_to_currency(@p4_bill)}"
-  %p= "- Tip: #{number_to_currency(@p4_tip)}"
-  %p= "- Total: #{number_to_currency(@p4_total)}"
-
-  %p= "Diner 5 Bill: #{number_to_currency(@p5_bill)}"
-  %p= "- Tax: #{number_to_currency(@p5_tip)}"
-  %p= "- Total: #{number_to_currency(@p5_total)}"
-
-  %p= "Total Pre-Tip: #{number_to_currency(@total_pretip)}"
-  %p= "Total Tip: #{number_to_currency(@total_tip)}"
-  %p= "Overall Total: #{number_to_currency(@overall_total)}"
   %div= link_to "Home", root_path
