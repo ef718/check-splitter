@@ -3,4 +3,7 @@
 
   = render partial: "bill", collection: @group_bill, as: :diner
 
+  %p.bill-summary= "Total Pre-Tip: #{number_to_currency(@total_pretip)}"
+  %p.bill-summary= "Total Tip: #{number_to_currency(@total_tip)}"
+  %p.bill-summary= "Overall Total: #{number_to_currency(@overall_total)}"
   %div= link_to "Home", root_path

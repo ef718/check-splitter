@@ -37,7 +37,7 @@ class WelcomeController < ApplicationController
     end
 
     @total_pretip = @total_pretax.to_f + @tax.to_f
-    @total_tip = @total_pretip * (@tip_percentage / 100)
+    @total_tip = @total_pretax * (@tip_percentage / 100)
     @overall_total = @total_pretip + @total_tip
 
   end

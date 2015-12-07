@@ -1,3 +1,4 @@
-%p= "Diner #{diner_counter + 1}'s Bill: #{number_to_currency(diner[:individual_bill])}"
+%p.bill-summary= "Diner #{diner_counter + 1}'s Bill"
+%p= "- Amount: #{number_to_currency(diner[:individual_bill])}"
 %p= "- Tip: #{number_to_currency(diner[:individual_tip])}"
 %p= "- Total: #{number_to_currency(diner[:individual_total])}"
