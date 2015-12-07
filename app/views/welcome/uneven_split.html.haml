@@ -8,23 +8,23 @@
     = form_tag('/uneven-results', method: "get") do
       .row
         .col-xs-12
-          = label_tag 'Diner 1'
+          = label_tag 'Diner 1:'
           = text_field_tag(:p1)
       .row
         .col-xs-12
-          = label_tag 'Diner 2'
+          = label_tag 'Diner 2:'
           = text_field_tag(:p2)
       .row
         .col-xs-12
-          = label_tag 'Diner 3'
+          = label_tag 'Diner 3:'
           = text_field_tag(:p3)
       .row
         .col-xs-12
-          = label_tag 'Diner 4'
+          = label_tag 'Diner 4:'
           = text_field_tag(:p4)
       .row
         .col-xs-12
-          = label_tag 'Diner 5'
+          = label_tag 'Diner 5:'
           = text_field_tag(:p5)
       .row
         .col-xs-12
@@ -32,7 +32,7 @@
           = number_field_tag(:tax, nil, step: 'any')
       .row
         .col-xs-12
-          = label_tag 'Tip Percentage'
+          = label_tag 'Tip Percentage:'
       .row
         .col-xs-12
           = radio_button_tag(:tip, '15%', 0.15)
