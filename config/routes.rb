@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  get '/results' => 'welcome#results'
+  get '/even' => 'welcome#even_split'
+
+  get '/results' => 'welcome#even_results'
 
   get '/uneven' => 'welcome#uneven_split'
 

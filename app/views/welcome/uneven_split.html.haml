@@ -6,30 +6,16 @@
     %br
 
     = form_tag('/uneven-results', method: "get") do
-      .row
-        .col-xs-12
-          = label_tag 'Diner 1:'
-          = text_field_tag(:p1)
-      .row
-        .col-xs-12
-          = label_tag 'Diner 2:'
-          = text_field_tag(:p2)
-      .row
-        .col-xs-12
-          = label_tag 'Diner 3:'
-          = text_field_tag(:p3)
-      .row
-        .col-xs-12
-          = label_tag 'Diner 4:'
-          = text_field_tag(:p4)
-      .row
-        .col-xs-12
-          = label_tag 'Diner 5:'
-          = text_field_tag(:p5)
+      = hidden_field_tag(:people, @number_of_people)
+      - for i in 1..@number_of_people do
+        .row
+          .col-xs-12
+            = label_tag "Diner #{i}:"
+            = text_field_tag(:"p#{i}")
       .row
         .col-xs-12
           = label_tag 'Tax Amount ($):'
-          = number_field_tag(:tax, nil, step: 'any')
+          = number_field_tag(:tax, nil, min: 0, step: 'any')
       .row
         .col-xs-12
           = label_tag 'Tip Percentage:'

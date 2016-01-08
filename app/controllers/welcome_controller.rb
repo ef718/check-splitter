@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
   def index
   end
 
-  def results
+  def even_results
     @people = params[:people].to_i
     pretax_bill = params[:pretax_bill].to_f
     tax = params[:tax].to_f
@@ -21,17 +21,19 @@ class WelcomeController < ApplicationController
   end
 
   def uneven_split
+    @number_of_people = params[:people].to_i
   end
 
   def uneven_results
+    @number_of_people = params[:people].to_i
     @tax = params[:tax].to_f
     @tip_percentage = params[:tip].to_f
 
-    p1 = sum_entry(params[:p1])
-    p2 = sum_entry(params[:p2])
-    p3 = sum_entry(params[:p3])
-    p4 = sum_entry(params[:p4])
-    p5 = sum_entry(params[:p5])
+    individual_amounts = {}
+
+    for i in 1..@number_of_people do
+      individual_amounts[i] = params[:"p#{i}"]
+    end
 
     diner_pretax_amounts = [p1, p2, p3, p4, p5].compact
     @total_pretax = diner_pretax_amounts.reduce(:+).to_f

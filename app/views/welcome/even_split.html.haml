@@ -1,0 +1,42 @@
+.container-fluid.main
+  = render partial: 'title'
+  .content
+    = form_tag('/results', method: "get") do
+      .row
+        .col-xs-12
+          = label_tag 'Number of People:'
+          = number_field_tag(:people, nil, min: 1, max: 50)
+      %br
+      .row
+        .col-xs-12
+          = label_tag 'Pre-Tax Bill:'
+          = number_field_tag(:pretax_bill, nil, min: 0, step: 'any')
+      %br
+      .row
+        .col-xs-12
+          = label_tag 'Tax Amount:'
+          = number_field_tag(:tax, nil, min: 0 step: 'any')
+      %br
+      .row
+        .col-xs-12
+          = label_tag 'Tip Percentage:'
+      .row
+        .col-xs-12
+          .col-xs-12
+            = radio_button_tag(:tip, '15%', 0.15)
+            = label_tag '15%'
+          .col-xs-12
+            = radio_button_tag(:tip, '18%', 0.18)
+            = label_tag '18%'
+          .col-xs-12
+            = radio_button_tag(:tip, '20%', 0.20)
+            = label_tag '20%'
+          .col-xs-12
+            = radio_button_tag(:tip, '25%', 0.25)
+            = label_tag '25%'
+      %br
+      = submit_tag 'Split Now'
+
+    .row
+      .col-xs-12
+        = link_to 'Split Unevenly', '/uneven'
