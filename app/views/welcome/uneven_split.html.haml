@@ -15,7 +15,7 @@
       .row
         .col-xs-12
           = label_tag 'Tax Amount ($):'
-          = number_field_tag(:tax, nil, min: 0, step: 'any')
+          = number_field_tag(:tax, nil, min: 0, max: 100000, step: 'any')
       .row
         .col-xs-12
           = label_tag 'Tip Percentage:'
