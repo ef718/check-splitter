@@ -35,7 +35,10 @@ class WelcomeController < ApplicationController
       individual_amounts[i] = params[:"p#{i}"]
     end
 
-    diner_pretax_amounts = [p1, p2, p3, p4, p5].compact
+    diner_pretax_amounts = individual_amounts.values.map do |values_array|
+      values_array.split.map(&:to_f).reduce(:+).to_f
+    end
+
     @total_pretax = diner_pretax_amounts.reduce(:+).to_f
 
     @group_bill = diner_pretax_amounts.map do |amount|
