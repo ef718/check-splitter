@@ -1,7 +1,7 @@
 .container-fluid.main
   = render partial: 'title'
   .content
-    %h1.text-primary Results
+    %h1.text-primary.text-center Results
     %br
 
     = render partial: "bill", collection: @group_bill, as: :diner
@@ -9,4 +9,7 @@
     %p.bill-summary.text-info= "Total Pre-Tip: #{number_to_currency(@total_pretip)}"
     %p.bill-summary.text-info= "Total Tip: #{number_to_currency(@total_tip)}"
     %p.bill-summary.text-danger= "Overall Total: #{number_to_currency(@overall_total)}"
-    %div= link_to "Home", root_path
+    %br
+    .row
+      .col-xs-12.text-center
+        = link_to "Home", root_path

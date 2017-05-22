@@ -1,7 +1,7 @@
 .container-fluid.main
   = render partial: 'title'
   .content
-    %h1.text-primary Split Proportionately
+    %h1.text-primary.text-center Split Proportionately
     %br
     %p Enter each diner's amounts separated by a space (i.e. <em>12.99 23.99 17.99</em>).
     %p Enter the cost of shared dishes in the same way.
@@ -11,8 +11,8 @@
       = hidden_field_tag(:people, @number_of_people)
       - for i in 1..@number_of_people do
         .row
-          .col-xs-12.text-success
-            = label_tag "Diner #{i}:"
+          .col-xs-12
+            = label_tag "Diner #{i}:", nil, class: 'text-success'
             = text_field_tag(:"p#{i}")
       .row
         .col-xs-12
