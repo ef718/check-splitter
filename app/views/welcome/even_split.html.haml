@@ -31,12 +31,9 @@
           .col-xs-12
             = radio_button_tag(:tip, '20%', 0.20)
             = label_tag '20%'
-          .col-xs-12
-            = radio_button_tag(:tip, '25%', 0.25)
-            = label_tag '25%'
       %br
       = submit_tag 'Split Now'
 
     .row
       .col-xs-12
-        = link_to 'Split Unevenly', '/uneven'
+        = link_to 'Split Propotionately', '/uneven'

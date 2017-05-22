@@ -7,8 +7,8 @@
           = label_tag 'Number of People:'
           = number_field_tag(:people, nil, min: 2, max: 20)
       %br
-      = submit_tag 'Split Unevenly'
+      = submit_tag 'Split Proportionately', class: 'btn btn-primary'
 
-    .row
-      .col-xs-12
-        = link_to 'Split Evenly', '/even'
+    / .row
+    /   .col-xs-12
+    /     = link_to 'Split Evenly', '/even'

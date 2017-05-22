@@ -20,7 +20,7 @@ body {
   font-weight: bold;
 }
 
-a, label, input, p {
+a, label, input, p, .btn {
   font-size: 20px;
 }
 
@@ -33,7 +33,7 @@ a, label, input, p {
   h1 {
     font-size: 70px;
   }
-  a, label, input, p {
+  a, label, input, p, .btn {
     font-size: 50px;
   }
   input[type=radio] {

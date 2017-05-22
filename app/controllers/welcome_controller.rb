@@ -28,6 +28,8 @@ class WelcomeController < ApplicationController
     @number_of_people = params[:people].to_i
     @tax = params[:tax].to_f
     @tip_percentage = params[:tip].to_f
+    @shared_amount = params[:shared].split.map(&:to_f).reduce(:+).to_f
+    pp_shared_amount = @shared_amount / @number_of_people
 
     individual_amounts = {}
 
@@ -39,10 +41,10 @@ class WelcomeController < ApplicationController
       values_array.split.map(&:to_f).reduce(:+).to_f
     end
 
-    @total_pretax = diner_pretax_amounts.reduce(:+).to_f
+    @total_pretax = diner_pretax_amounts.reduce(:+).to_f + @shared_amount
 
     @group_bill = diner_pretax_amounts.map do |amount|
-      {individual_bill: individual_post_tax(amount), individual_tip: individual_tip(amount), individual_total: (individual_post_tax(amount).to_f + individual_tip(amount).to_f)}
+      {individual_bill: individual_post_tax(amount, pp_shared_amount), individual_tip: individual_tip(amount, pp_shared_amount), individual_total: (individual_post_tax(amount, pp_shared_amount).to_f + individual_tip(amount, pp_shared_amount).to_f)}
     end
 
     @total_pretip = @total_pretax + @tax
@@ -60,12 +62,13 @@ class WelcomeController < ApplicationController
     entry.split.map(&:to_f).reduce(:+)
   end
 
-  def individual_post_tax(individual_sum)
-    individual_sum + @tax * (individual_sum / @total_pretax) if individual_sum
+  def individual_post_tax(individual_sum, pp_shared_amount)
+    diner_pretax_total = individual_sum + pp_shared_amount
+    diner_pretax_total + @tax * (diner_pretax_total / @total_pretax) if !individual_sum.zero?
   end
 
-  def individual_tip(individual_sum)
-    ((@tip_percentage / 100) * individual_sum) if individual_sum
+  def individual_tip(individual_sum, pp_shared_amount)
+    ((@tip_percentage / 100) * (individual_sum + pp_shared_amount)) if individual_sum
   end
 
   def diner_bill_hash(individual_bill, individual_tip, individual_total)
