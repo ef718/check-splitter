@@ -1,28 +1,29 @@
 .container-fluid.main
   = render partial: 'title'
   .content
-    %h1 Split Proportionately
+    %h1.text-primary Split Proportionately
+    %br
     %p Enter each diner's amounts separated by a space (i.e. <em>12.99 23.99 17.99</em>).
-    %p Enter cost of shared dishes separated by a space.
+    %p Enter the cost of shared dishes in the same way.
     %br
 
     = form_tag('/uneven-results', method: "get") do
       = hidden_field_tag(:people, @number_of_people)
       - for i in 1..@number_of_people do
         .row
-          .col-xs-12
+          .col-xs-12.text-success
             = label_tag "Diner #{i}:"
             = text_field_tag(:"p#{i}")
       .row
         .col-xs-12
-          = label_tag 'Shared Dishes:'
+          = label_tag 'Shared Dishes (optional):'
           = text_field_tag(:shared)
       .row
         .col-xs-12
           = label_tag 'Tax Amount ($):'
           = number_field_tag(:tax, nil, min: 0, max: 100000, step: 'any')
       .row
-        .col-xs-12
+        .col-xs-12.text-warning
           = label_tag 'Tip Percentage:'
       .row
         .col-xs-12
@@ -38,7 +39,7 @@
           = radio_button_tag(:tip, '20%', 0.20)
           = label_tag '20%'
       %br
-      = submit_tag 'Split Now', class: 'btn btn-primary'
+      = submit_tag 'Split Now!', class: 'btn btn-success'
 
     / %br
     / %div= link_to 'Split Perfectly Equally', 'even'

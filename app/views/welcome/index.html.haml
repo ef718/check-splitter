@@ -1,5 +1,6 @@
 .container-fluid.main
   = render partial: 'title'
+  %br
   .content
     = form_tag('/uneven', method: "get") do
       .row
@@ -7,7 +8,8 @@
           = label_tag 'Number of People:'
           = number_field_tag(:people, nil, min: 2, max: 20)
       %br
-      = submit_tag 'Split Proportionately', class: 'btn btn-primary'
+      %br
+      = submit_tag 'Split Proportionately', class: 'btn btn-success'
 
     / .row
     /   .col-xs-12
